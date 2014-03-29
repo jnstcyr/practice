@@ -31,10 +31,18 @@ var LI = (function(LI) {
     }
 
     LI.MYAJAX.alertContents = function () {
+        var output = "";
         if (httpRequest.readyState === 4) {
             if (httpRequest.status === 200) {
-                var response = JSON.parse(httpRequest.responseText);
-                console.log(response);
+                var responses = JSON.parse(httpRequest.responseText);
+                for(i=0;responses.cheeses.length;i++){
+                    output =+ "<li><ul class='cheese-profile plain-list'>"+
+                              "<li><div class='cheese-image'>"+responses.cheeses[i]["image"]+"</div></li>"+
+                              "<li><div class='cheese-info'><p class='cheese-name'>"+responses.cheeses[i]["title"]+"</p>"+
+                              "<p>"+responses.cheeses[i]["location"]+"</p><a href='javascript:void(0);''>Add Cheese</a></div></li>"+
+                              "<li><div class='cheese-actions'><a class='removecheese' href='javascript:void(0);'>x</a></div></li></ul></li>";
+                }
+                document.getElementById("suggestedCheese").innerHTML = output;
             } else {
                 console.log('There was a problem with the request.');
             }
