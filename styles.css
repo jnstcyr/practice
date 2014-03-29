@@ -75,24 +75,13 @@ nav .nav-list li a {
 	border: solid 1px #E0D289;
 	box-sizing: border-box;
 }
-.sidebar {
-	width: 318px;
-	box-sizing: border-box;
-	border: solid 1px #DABF68;
-	padding: 5px 8px;
-	float: right;
-}
-.cheese-profile li {
+.cheese-profile li,
+.cheeseHover ul li {
 	float: left;
 }
-.cheese-image {
-	width: 40px;
-	height: 40px;
-}
-.cheese-info {
-	width: 233px;
-	font-size: 13px;
-	padding: 0 5px ;
+.cheese-image img {
+	width: 100%;
+	height: 100%;
 }
 .cheese-name {
 	font-weight: bold;
@@ -103,5 +92,42 @@ nav .nav-list li a {
 }
 .cheese-actions a {
 	display: block;
-	line-height: 40px;
+	line-height: 35px;
+}
+.sidebar {
+	width: 325px;
+	box-sizing: border-box;
+	border: solid 1px #DABF68;
+	padding: 15px 8px 0;
+	float: right;
+}
+.suggestedCheese > li {
+	margin-bottom: 15px;
+}
+.sidebar .cheese-image {
+	display: block;
+	width: 40px;
+	height: 40px;
+}
+.sidebar .cheese-info {
+	width: 243px;
+	font-size: 13px;
+	padding: 0 5px ;
+}
+.cheeseHover {
+	display: none;
+	position: relative;
+	top: 10px;
+	left: 10px;
+	background: #fff;
+	z-index: 999;
+	width: 515px;
+}
+.cheeseHover .cheese-info {
+	width: 400px;
+	padding: 5px;
+}
+.cheeseHover .cheese-image {
+	height: 100px;
+	width: 100px;
 }

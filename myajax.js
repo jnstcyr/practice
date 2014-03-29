@@ -1,12 +1,12 @@
-var LI = (function(LI) {
-    return LI;
+var JNS = (function(JNS) {
+    return JNS;
 })({});
-(function(LI) {
+(function(JNS) {
     var ajax = {};
-    LI.MYAJAX = ajax;
+    JNS.MYCHEESE = ajax;
     var httpRequest;
 
-    LI.MYAJAX.makeRequest = function (url, action) {
+    JNS.MYCHEESE.makeRequest = function (url, action) {
         if (window.XMLHttpRequest) { // Mozilla, Safari, ...
             httpRequest = new XMLHttpRequest();
         } else if (window.ActiveXObject) { // IE
@@ -30,24 +30,122 @@ var LI = (function(LI) {
         httpRequest.send();
     }
 
-    LI.MYAJAX.alertContents = function () {
-        var output = "";
+    JNS.MYCHEESE.buildCheeses = function () {
+        var suggestedCheeseOutput = [];
         if (httpRequest.readyState === 4) {
             if (httpRequest.status === 200) {
                 var responses = JSON.parse(httpRequest.responseText);
-                for(i=0;responses.cheeses.length;i++){
-                    output =+ "<li><ul class='cheese-profile plain-list'>"+
-                              "<li><div class='cheese-image'>"+responses.cheeses[i]["image"]+"</div></li>"+
-                              "<li><div class='cheese-info'><p class='cheese-name'>"+responses.cheeses[i]["title"]+"</p>"+
-                              "<p>"+responses.cheeses[i]["location"]+"</p><a href='javascript:void(0);''>Add Cheese</a></div></li>"+
-                              "<li><div class='cheese-actions'><a class='removecheese' href='javascript:void(0);'>x</a></div></li></ul></li>";
+                for(i=0;i<responses.cheeses.length;i++){
+                    var image = responses.cheeses[i]["image"],
+                        link = responses.cheeses[i]['link'],
+                        title = responses.cheeses[i]["title"],
+                        id = responses.cheeses[i]["id"],
+                        location = responses.cheeses[i]["location"],
+                        description = responses.cheeses[i]["description"];
+
+                    suggestedCheeseOutput.push("<li id='"+
+                        id+"' class='clearfix'>"+
+                        "<ul class='cheese-profile plain-list'>"+
+
+                        "<li><a href='javascript:void(0);' class='cheese-image show-hover'><img src='"+
+                        image+"'></a></li>"+
+                        "<li><div class='cheese-info'><p>"+
+                        "<a class='cheese-name show-hover' href='"+
+                        link+"'>"+
+                        title+"</a>, "+
+                        location+
+                        "</p><a href='javascript:void(0);''>Add Cheese</a></div></li>"+
+                        "<li><div class='cheese-actions'>"+
+                        
+                        "<a data-id='"+id+"' href='javascript:void(0);' class='removecheese'>x</a></div></li></ul>"+
+                        "<a href='"+
+                        link+"' class='cheeseHover'><ul class='plain-list'>"+
+                        "<li><div class='cheese-image'><img src='"+
+                        image+"'></div></li>"+
+                        "<li><div class='cheese-info'><div class='cheese-name'>"+
+                        title+"</div><div class='cheese-location'>"+
+                        location+"</div><div class='cheese-description'>"+
+                        description+"</div></div></li></ul></a></li>");
                 }
-                document.getElementById("suggestedCheese").innerHTML = output;
+                JNS.MYCHEESE.diplayCheese(suggestedCheeseOutput);
+             
+                JNS.MYCHEESE.initCheeseEvents();
             } else {
                 console.log('There was a problem with the request.');
             }
         }
     }
-    
-})(LI)
-   LI.MYAJAX.makeRequest('cheese.json', LI.MYAJAX.alertContents);
+    JNS.MYCHEESE.diplayCheese = function(cheeses){
+        var suggestedCheese = document.getElementById('suggestedCheeses'),
+            initCheese = [];
+        for(var cheese in cheeses){
+            if(cheese < 3){
+                initCheese += cheeses[cheese];
+            }
+        }
+        suggestedCheese.innerHTML = initCheese;
+    }
+    //Register of DOM elements and events
+    JNS.MYCHEESE.registery = {};
+    JNS.MYCHEESE.addCheese = function(element, options){
+        var id = JNS.MYCHEESE.getId();
+        element.setAttribute('data-cheese-id', id);
+        JNS.MYCHEESE.registery[id] = options;
+    }
+    //Create unique id for DOM elements
+    JNS.MYCHEESE.getId =(function(){
+        var id = 0;
+        return function(){
+            id = id + 1;
+            return id;
+        }
+    })();
+    JNS.MYCHEESE.initCheeseEvents = function(){
+        var hoverElements = document.getElementsByClassName('show-hover');
+        for(i=0;i<hoverElements.length;i++){
+            JNS.MYCHEESE.addCheese(hoverElements[i], {'onmouseover':JNS.MYCHEESE.showHover()})
+        };
+
+        var removeElements = document.getElementsByClassName('removecheese');
+        for (i=0;i<removeElements.length;i++) {
+            var theId = removeElements[i].getAttribute('data-id')
+            JNS.MYCHEESE.addCheese(removeElements[i], {'onclick':JNS.MYCHEESE.removeCheese()});
+        };
+    }
+
+    JNS.MYCHEESE.getCheeseId = function(event){
+        var eID = event.target.getAttribute('data-cheese-id');
+        if(eID){
+            var options = JNS.MYCHEESE.registery[eID];
+            if(options[event.type]){
+                options[event.type](event);
+            }
+        }
+    }
+    JNS.MYCHEESE.removeCheese = function(element){
+        console.log('remove');
+        var d = document.getElementById('suggestedCheeses');
+        var olddiv = document.getElementById(element);
+        d.removeChild(olddiv);
+    }
+    JNS.MYCHEESE.showHover = function(){
+        console.log("show");
+         //document.getElementById(id).parentNode.nextSibling.style.display='block'; 
+    }
+
+})(JNS)
+   JNS.MYCHEESE.makeRequest('cheese.json', JNS.MYCHEESE.buildCheeses);
+   document.body.addEventListener("onmouseover", JNS.MYCHEESE.getCheeseId);
+   document.body.addEventListener("onclick", JNS.MYCHEESE.getCheeseId);
+
+
+
+
+   
+   
+
+
+
+
+
+
