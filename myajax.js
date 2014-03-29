@@ -47,10 +47,10 @@ var JNS = (function(JNS) {
                         id+"' class='clearfix'>"+
                         "<ul class='cheese-profile plain-list'>"+
 
-                        "<li><a href='javascript:void(0);' class='cheese-image show-hover'><img src='"+
+                        "<li><a href='javascript:void(0);' class='cheese-image hover'><img src='"+
                         image+"'></a></li>"+
                         "<li><div class='cheese-info'><p>"+
-                        "<a class='cheese-name show-hover' href='"+
+                        "<a class='cheese-name hover' href='"+
                         link+"'>"+
                         title+"</a>, "+
                         location+
@@ -68,7 +68,6 @@ var JNS = (function(JNS) {
                         description+"</div></div></li></ul></a></li>");
                 }
                 JNS.MYCHEESE.diplayCheese(suggestedCheeseOutput);
-             
                 JNS.MYCHEESE.initCheeseEvents();
             } else {
                 console.log('There was a problem with the request.');
@@ -101,21 +100,16 @@ var JNS = (function(JNS) {
         }
     })();
     JNS.MYCHEESE.initCheeseEvents = function(){
-        var hoverElements = document.getElementsByClassName('show-hover');
-        for(i=0;i<hoverElements.length;i++){
-            JNS.MYCHEESE.addCheese(hoverElements[i], {'onmouseover':JNS.MYCHEESE.showHover()})
-        };
-
-        var removeElements = document.getElementsByClassName('removecheese');
-        for (i=0;i<removeElements.length;i++) {
-            var theId = removeElements[i].getAttribute('data-id')
-            JNS.MYCHEESE.addCheese(removeElements[i], {'onclick':JNS.MYCHEESE.removeCheese()});
-        };
+        //debugger;
+        document.body.addEventListener("mouseover", function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.addEventListener("click", function(){JNS.MYCHEESE.getCheeseId()}, true);
     }
 
     JNS.MYCHEESE.getCheeseId = function(event){
         var eID = event.target.getAttribute('data-cheese-id');
+        console.log(eID);
         if(eID){
+            console.log(JNS.MYCHEESE.registery[eID]);
             var options = JNS.MYCHEESE.registery[eID];
             if(options[event.type]){
                 options[event.type](event);
@@ -133,10 +127,21 @@ var JNS = (function(JNS) {
          //document.getElementById(id).parentNode.nextSibling.style.display='block'; 
     }
 
+    var hoverElements = document.getElementsByClassName('hover');
+    for(i=0;i<hoverElements.length;i++){
+        JNS.MYCHEESE.addCheese(hoverElements[i], {'mouseover':JNS.MYCHEESE.showHover()})
+    };
+
+    var removeElements = document.getElementsByClassName('removecheese');
+    for (i=0;i<removeElements.length;i++) {
+        var theId = removeElements[i].getAttribute('data-id')
+        JNS.MYCHEESE.addCheese(removeElements[i], {'click':JNS.MYCHEESE.removeCheese()});
+    };
+
 })(JNS)
-   JNS.MYCHEESE.makeRequest('cheese.json', JNS.MYCHEESE.buildCheeses);
-   document.body.addEventListener("onmouseover", JNS.MYCHEESE.getCheeseId);
-   document.body.addEventListener("onclick", JNS.MYCHEESE.getCheeseId);
+   JNS.MYCHEESE.makeRequest('cheese.json', JNS.MYCHEESE.buildCheeses);   
+   
+        
 
 
 
