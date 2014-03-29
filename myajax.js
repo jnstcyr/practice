@@ -101,13 +101,23 @@ var JNS = (function(JNS) {
     })();
     JNS.MYCHEESE.initCheeseEvents = function(){
         //debugger;
-        document.body.addEventListener("mouseover", function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.addEventListener("click", function(){JNS.MYCHEESE.getCheeseId()}, true);
+        var hoverElements = document.getElementsByClassName('hover');
+        for(i=0;i<hoverElements.length;i++){
+            JNS.MYCHEESE.addCheese(hoverElements[i], {'mouseover':JNS.MYCHEESE.showHover()})
+        };
+
+        var removeElements = document.getElementsByClassName('removecheese');
+        for (i=0;i<removeElements.length;i++) {
+            //var theId = removeElements[i].getAttribute('data-id')
+            JNS.MYCHEESE.addCheese(removeElements[i], {'click':JNS.MYCHEESE.removeCheese()});
+        };
     }
 
     JNS.MYCHEESE.getCheeseId = function(event){
-        var eID = event.target.getAttribute('data-cheese-id');
-        console.log(eID);
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        var eID = target.getAttribute('data-id');
+        console.log(target);
         if(eID){
             console.log(JNS.MYCHEESE.registery[eID]);
             var options = JNS.MYCHEESE.registery[eID];
@@ -117,7 +127,6 @@ var JNS = (function(JNS) {
         }
     }
     JNS.MYCHEESE.removeCheese = function(element){
-        console.log('remove');
         var d = document.getElementById('suggestedCheeses');
         var olddiv = document.getElementById(element);
         d.removeChild(olddiv);
@@ -127,19 +136,11 @@ var JNS = (function(JNS) {
          //document.getElementById(id).parentNode.nextSibling.style.display='block'; 
     }
 
-    var hoverElements = document.getElementsByClassName('hover');
-    for(i=0;i<hoverElements.length;i++){
-        JNS.MYCHEESE.addCheese(hoverElements[i], {'mouseover':JNS.MYCHEESE.showHover()})
-    };
-
-    var removeElements = document.getElementsByClassName('removecheese');
-    for (i=0;i<removeElements.length;i++) {
-        var theId = removeElements[i].getAttribute('data-id')
-        JNS.MYCHEESE.addCheese(removeElements[i], {'click':JNS.MYCHEESE.removeCheese()});
-    };
 
 })(JNS)
-   JNS.MYCHEESE.makeRequest('cheese.json', JNS.MYCHEESE.buildCheeses);   
+    JNS.MYCHEESE.makeRequest('cheese.json', JNS.MYCHEESE.buildCheeses);   
+    document.body.addEventListener('mouseover', function(){JNS.MYCHEESE.getCheeseId()}, true);
+    document.body.addEventListener('click', function(){JNS.MYCHEESE.getCheeseId()}, true);
    
         
 
