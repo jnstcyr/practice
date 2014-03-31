@@ -6,7 +6,7 @@
             "link": "http://fromagination.com/products/greenfields-cows-milk/",
             "image": "images/saxon-big-eds1.jpg",
             "location": "Saxon Homestead Creamery, Cleveland, Wisconsin.",
-            "description": "JRaw cow’s milk cheese with flavor notes of a Gruyère crossed with a mild Gouda. Slightly tangy and semi-firm in texture.<br>Recommended Companions: Spiced almonds, dried cranberries, Classic White Potter’s Crackers, Merlot wine."
+            "description": "JRaw cow’s milk cheese with flavor notes of a Gruyère crossed with a mild Gouda. Slightly tangy and semi-firm in texture."
         },
         {
             "id": "cheese-02",
@@ -14,7 +14,7 @@
             "link": "http://fromagination.com/products/hooks-5-year-cheddar-cows-milk/",
             "image": "images/Hooks-5-Year-Cheddar1.jpg",
             "location": "Hook’s Cheese, Mineral Point, Wisconsin.",
-            "description": "Cow’s milk, firm & traditional orange.Aged five years. Soft but still crumbly. A great well-rounded cheddar, milder than it’s 8, 10, or 12-year cousins. <br>Recommended Companions: Dried cherries, Classic White Potter’s Crackers, Merlot wine, Ale Asylum Hopalicious ale."
+            "description": "Cow’s milk, firm & traditional orange.Aged five years. Soft but still crumbly. A great well-rounded cheddar, milder than it’s 8, 10, or 12-year cousins."
         },
         {
             "id": "cheese-03",
@@ -22,7 +22,7 @@
             "link": "http://fromagination.com/products/red-rock-cows-milk/",
             "image": "images/Red-Rock1.jpg",
             "location": "Roelli Cheese, Shullsburg, Wisconsin.",
-            "description": "Pasteurized cow’s milk combines the creaminess of an American-style cheddar with the bite and tang of a French blue cheese.  Open-air cured, cave-aged, and light blue veining.<br>Recommended Companions:  Dried cranberries, Quince & Apple Fig and Black Tea preserves, Classic Wheat Potter’s Crackers, Ale Asylum Contorter Porter ale."
+            "description": "Pasteurized cow’s milk combines the creaminess of an American-style cheddar with the bite and tang of a French blue cheese.  Open-air cured, cave-aged, and light blue veining."
         },
         {
             "id": "cheese-04",
@@ -30,7 +30,7 @@
             "link": "http://fromagination.com/products/expresso-bellavitano-cows-milk/",
             "image": "images/Bellavitano-Black-Pepper1.jpg",
             "location": "Sartori Cheese, Plymouth, Wisconsin.",
-            "description": "This cheese won 3rd place at the 2013 American Cheese Society awards. It is created by hand-rubbing freshly ground expresso into wheels of sweet, creamy BellaVitano cheese. Wake up and…eat the cheese!<br>Recommended Companion: Gail Ambrosius Salted Caramels."
+            "description": "This cheese won 3rd place at the 2013 American Cheese Society awards. It is created by hand-rubbing freshly ground expresso into wheels of sweet, creamy BellaVitano cheese. Wake up and…eat the cheese!"
         },
         {
             "id": "cheese-05",
@@ -38,7 +38,7 @@
             "link": "http://fromagination.com/products/evalon-goats-milk/",
             "image": "images/Evalon-Saxon-Creamery1.jpg",
             "location": "LaClare Farms, Chilton, Wisconsin.",
-            "description": "Raw goat’s milk gouda. Supple, smooth, sweet, aged over 70 days. Best in Show winner at the U.S. Championship Cheese Contest in 2011. Slighty floral flavors.<br>Recommended Companions: Dried cherries, Quince & Apple Pear with Honey and Ginger preserves, Sauvignon Blanc wine, New Glarus Spotted Cow ale."
+            "description": "Raw goat’s milk gouda. Supple, smooth, sweet, aged over 70 days. Best in Show winner at the U.S. Championship Cheese Contest in 2011. Slighty floral flavors."
         },
         {
             "id": "cheese-06",
@@ -46,7 +46,7 @@
             "link": "http://fromagination.com/products/driftless-plain-sheeps-milk/",
             "image": "images/Driftless-Plain1.jpg",
             "location": "Hidden Springs Creamery, Westby, Wisconsin.",
-            "description": "Award-winning fresh, hand-ladled sheep/’s milk cheese. Sold individually in 5 oz. sealed containers. Lovely soft, whipped texture. This version is the plain, unadulterated sheep/’s milk variety.<br>Recommended Companions: Classic White Potter/’s Crackers, Quince & Apple Cranberry Relish preserves, Pinot Gris wine."
+            "description": "Award-winning fresh, hand-ladled sheep’s milk cheese. Sold individually in 5 oz. sealed containers. Lovely soft, whipped texture. This version is the plain, unadulterated sheep/’s milk variety."
         },
         {
             "id": "cheese-07",
@@ -54,7 +54,7 @@
             "link": "http://fromagination.com/products/black-sheep-truffle-sheeps-milk/",
             "image": "images/Black-Sheep-Truffle1.jpg",
             "location": "Carr Valley Cheese, La Valle, Wisconsin.",
-            "description": "Inspired by the truffled cheese of Italy, this award winning sheep/’s milk cheese is washed in truffle oil and aged over 6 months. It has a sweet unique earthy flavor from the black truffle pieces throughout the cheese.<br>It was awarded 1st Place at the 2011 U.S. Championship Cheese Contest and 1st Place at the 2012 World Championship Cheese Contest.<br>Recommended Companions: Fromagination spiced almonds or Treat spiced pecans."
+            "description": "Inspired by the truffled cheese of Italy, this award winning sheep’s milk cheese is washed in truffle oil and aged over 6 months. It has a sweet unique earthy flavor from the black truffle pieces throughout the cheese."
         },
         {
             "id": "cheese-08",
@@ -94,7 +94,7 @@
             "link": "http://fromagination.com/products/vintage-van-gogh-cows-milk/",
             "image": "images/Vintage-Van-Gogh1.jpg",
             "location": "Roth Käse, Monroe, Wisconsin.",
-            "description": "Full-cream gouda, aged a minimum of 6 months. Rich and creamy flavor with caramel and coffee notes.<br>Recommended Companions: Dried cranberries or cherries, dark chocolate, Pinot Noir wine, Bock beer."
+            "description": "Full-cream gouda, aged a minimum of 6 months. Rich and creamy flavor with caramel and coffee notes."
         }
     ]
 }

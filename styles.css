@@ -101,8 +101,14 @@ nav .nav-list li a {
 	padding: 15px 8px 0;
 	float: right;
 }
+.suggestedCheese {
+	height: 175px;
+	overflow: hidden;
+}
 .suggestedCheese > li {
 	margin-bottom: 15px;
+	max-height: 307px;
+	overflow: hidden;
 }
 .sidebar .cheese-image {
 	display: block;
@@ -116,15 +122,13 @@ nav .nav-list li a {
 }
 .cheeseHover {
 	display: none;
-	position: relative;
-	top: 10px;
-	left: 10px;
+	position: absolute;
 	background: #fff;
 	z-index: 999;
-	width: 515px;
+	border: solid 1px #DABF68;
+	padding: 5px;
 }
 .cheeseHover .cheese-info {
-	width: 400px;
 	padding: 5px;
 }
 .cheeseHover .cheese-image {
