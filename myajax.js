@@ -46,7 +46,7 @@ var JNS = (function(JNS) {
                     suggestedCheeseOutput.push("<li id='"+
                         id+"' class='clearfix'>"+
                         "<ul class='cheese-profile plain-list'>"+
-                        "<li><a href='#' class='cheese-image'><img data-cheese-id='"+
+                        "<li><a href='javascript:void(0)' class='cheese-image'><img data-cheese-id='"+
                         id+"' class='hover' src='"+
                         image+"'></a></li>"+
                         "<li><div class='cheese-info'>"+
