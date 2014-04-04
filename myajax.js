@@ -138,7 +138,6 @@ var JNS = (function(JNS) {
         }
     })();
     JNS.MYCHEESE.initCheeseEvents = function(){
-        //debugger;
         var hoverTrigger = document.getElementsByClassName('hover');
         for(i=0;i<hoverTrigger.length;i++){
             var hoverAttr = hoverTrigger[i].getAttribute('data-cheese-id');
@@ -168,9 +167,22 @@ var JNS = (function(JNS) {
 
 })(JNS)
     JNS.MYCHEESE.makeRequest('cheese.json', JNS.MYCHEESE.buildCheeses);   
-    document.body.addEventListener('mouseover', function(){JNS.MYCHEESE.getCheeseId()}, true);
-    document.body.addEventListener('mouseout', function(){JNS.MYCHEESE.getCheeseId()}, true);
-    document.body.addEventListener('click', function(){JNS.MYCHEESE.getCheeseId()}, true);
+    if(addEventListener){
+        document.body.addEventListener('mouseover', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.addEventListener('mouseout', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.addEventListener('click', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.addEventListener('touchenter', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.addEventListener('touchleave', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.addEventListener('touchstart', function(){JNS.MYCHEESE.getCheeseId()}, true);
+    }else{
+        document.body.attachEvent('mouseover', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.attachEvent('mouseout', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.attachEvent('click', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.attachEvent('touchenter', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.attachEvent('touchleave', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.attachEvent('touchstart', function(){JNS.MYCHEESE.getCheeseId()}, true);
+    }
+    
    
         
 

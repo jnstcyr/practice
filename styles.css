@@ -49,7 +49,7 @@ nav .nav-list li {
 nav .nav-list li a {
 	color: #fff;
 }
-.main section {
+.main section, .main .section {
 	background: #fff;
 	float: left;
 	width: 627px;
