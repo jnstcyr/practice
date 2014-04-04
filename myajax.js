@@ -84,7 +84,7 @@ var JNS = (function(JNS) {
         var cheeses = [],
             height = 0;
         cheeses = document.querySelectorAll('.suggestedCheese > li'),
-        selectCheeses = Array.prototype.slice.call( cheeses, 0, 4 );\
+        selectCheeses = Array.prototype.slice.call( cheeses, 0, 4 );
         for(i=0;i<selectCheeses.length;i++){
             height += selectCheeses[i].clientHeight;
         }
