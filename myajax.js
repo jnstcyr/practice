@@ -83,12 +83,10 @@ var JNS = (function(JNS) {
     JNS.MYCHEESE.calcHeight = function(){
         var cheeses = [],
             height = 0;
-        cheeses = document.querySelectorAll('.suggestedCheese > li');
-        for(i=0;i<cheeses.length;i++){
-            index = Array.prototype.indexOf.call(cheeses, cheeses[i]);
-            if(index < 4){
-                height += cheeses[i].offsetHeight;
-            }
+        cheeses = document.querySelectorAll('.suggestedCheese > li'),
+        selectCheeses = Array.prototype.slice.call( cheeses, 0, 4 );\
+        for(i=0;i<selectCheeses.length;i++){
+            height += selectCheeses[i].clientHeight;
         }
         document.getElementById('suggestedCheeses').style.height = height+'px';
     }
