@@ -57,7 +57,7 @@ var JNS = (function(JNS) {
                         "<a data-cheese-id='"+id+"' href='#' class='removecheese'>x</a></div></li></ul>"+
                         
                         "<div class='cheeseHover "+id+"'>"+
-                        "<ul class='plain-list'>"+
+                        "<div class='arrow-right "+id+"'></div><ul class='plain-list'>"+
                         "<li><div class='cheese-image'><a href='"+link+"'><img src='"+
                         image+"'></a></div></li>"+"<li><div class='cheese-info'><div class='cheese-name'>"+
                         title+"</div><div class='cheese-location'>"+
@@ -95,27 +95,32 @@ var JNS = (function(JNS) {
     JNS.MYCHEESE.removeCheese = function(e){
         var element = event.target.getAttribute('data-cheese-id'),
             d = document.getElementById('suggestedCheeses'),
-            cheeseElement = document.getElementById(element);
+            cheeseElement = document.getElementById(element),
+            newLi = document.createElement("LI").innerHTML = cheeseElement;
         e.preventDefault;
         d.removeChild(cheeseElement);
+        d.appendChild(newLi);
         JNS.MYCHEESE.calcHeight();
     }
     JNS.MYCHEESE.showHover = function(){
         var element = event.target.getAttribute('data-cheese-id'),
-            hoverElement = document.querySelector('.'+element);
+            hoverElement = document.querySelector('.'+element),
+            rect = event.target.getBoundingClientRect(),
+            e = e || window.event;
+
         if(hoverElement){
             var visibleElement = document.querySelector('.cheeseHover'),
                 style = window.getComputedStyle(visibleElement);
             if (style.display === 'none') {
                 hoverElement.style.display='block'; 
-                hoverElement.style.left = event.offsetLeft+'px';
-                hoverElement.style.top = event.offsetTop+'px';
+                hoverElement.style.left = e.pageX-hoverElement.offsetWidth-20+'px';
+                hoverElement.style.top = e.pageY-25+'px';
             }
-            hoverElement.addEventListener('mouseleave', function(){JNS.MYCHEESE.hideHover(hoverElement)}, true);
+            JNS.MYCHEESE.addCheese(hoverElement, {'mouseleave': JNS.MYCHEESE.hideHover(hoverElement)});
         }
     }
-    JNS.MYCHEESE.hideHover = function(el){
-        el.style.display='none';
+    JNS.MYCHEESE.hideHover = function(element){
+        element.style.display = 'none';
     }
     //Register of DOM elements and events
     JNS.MYCHEESE.registery = {};
@@ -141,7 +146,6 @@ var JNS = (function(JNS) {
 
         var removeTrigger = document.getElementsByClassName('removecheese');
         for (i=0;i<removeTrigger.length;i++) {
-            //var theId = removeElements[i].getAttribute('data-id')
             JNS.MYCHEESE.addCheese(removeTrigger[i], {'click':JNS.MYCHEESE.removeCheese});
         };
     }
@@ -162,6 +166,7 @@ var JNS = (function(JNS) {
 })(JNS)
     JNS.MYCHEESE.makeRequest('cheese.json', JNS.MYCHEESE.buildCheeses);   
     document.body.addEventListener('mouseover', function(){JNS.MYCHEESE.getCheeseId()}, true);
+    document.body.addEventListener('mouseout', function(){JNS.MYCHEESE.getCheeseId()}, true);
     document.body.addEventListener('click', function(){JNS.MYCHEESE.getCheeseId()}, true);
    
         

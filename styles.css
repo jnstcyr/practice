@@ -128,6 +128,18 @@ nav .nav-list li a {
 	border: solid 1px #DABF68;
 	padding: 5px;
 }
+.arrow-right {
+	width: 0; 
+	height: 0; 
+	border-bottom: 10px solid transparent;  /* left arrow slant */
+	border-top: 10px solid transparent; /* right arrow slant */
+	border-left: 10px solid #DABF68; /* bottom, add background color here */
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	top: 25px;
+	right: -10px;
+}
 .cheeseHover .cheese-info {
 	padding: 5px;
 }
