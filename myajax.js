@@ -52,7 +52,7 @@ var JNS = (function(JNS) {
                         "<li><div class='cheese-info'>"+
                         "<a class='cheese-name hover' data-cheese-id='"+id+"' href='"+
                         link+"'>"+title+"</a>, "+
-                        location+"<a href='"+link+"'>Add Cheese</a></div></li>"+
+                        location+"<br><a href='"+link+"'>Add Cheese</a></div></li>"+
                         "<li><div class='cheese-actions'>"+
                         "<a data-cheese-id='"+id+"' href='#' class='removecheese'>x</a></div></li></ul>"+
                         
