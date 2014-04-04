@@ -57,7 +57,7 @@ var JNS = (function(JNS) {
                         "<a data-cheese-id='"+id+"' href='#' class='removecheese'>x</a></div></li></ul>"+
                         
                         "<div class='cheeseHover "+id+"'>"+
-                        "<div class='arrow-right "+id+"'></div><ul class='plain-list'>"+
+                        "<div class='arrow-right'></div><ul class='plain-list'>"+
                         "<li><div class='cheese-image'><a href='"+link+"'><img src='"+
                         image+"'></a></div></li>"+"<li><div class='cheese-info'><div class='cheese-name'>"+
                         title+"</div><div class='cheese-location'>"+
@@ -116,11 +116,13 @@ var JNS = (function(JNS) {
                 hoverElement.style.left = e.pageX-hoverElement.offsetWidth-20+'px';
                 hoverElement.style.top = e.pageY-25+'px';
             }
-            JNS.MYCHEESE.addCheese(hoverElement, {'mouseleave': JNS.MYCHEESE.hideHover(hoverElement)});
+            
         }
     }
-    JNS.MYCHEESE.hideHover = function(element){
-        element.style.display = 'none';
+    JNS.MYCHEESE.hideHover = function(){
+        var element = event.target.getAttribute('data-cheese-id'),
+            hoverElement = document.querySelector('.'+element);
+        hoverElement.style.display = 'none';
     }
     //Register of DOM elements and events
     JNS.MYCHEESE.registery = {};
@@ -141,7 +143,10 @@ var JNS = (function(JNS) {
         //debugger;
         var hoverTrigger = document.getElementsByClassName('hover');
         for(i=0;i<hoverTrigger.length;i++){
-            JNS.MYCHEESE.addCheese(hoverTrigger[i], {'mouseover':JNS.MYCHEESE.showHover})
+            var hoverAttr = hoverTrigger[i].getAttribute('data-cheese-id');
+            JNS.MYCHEESE.addCheese(hoverTrigger[i], {   'mouseover':JNS.MYCHEESE.showHover,
+                                                        'mouseout':JNS.MYCHEESE.hideHover
+                                                    })
         };
 
         var removeTrigger = document.getElementsByClassName('removecheese');
