@@ -30,26 +30,31 @@ a {
 	max-width: 960px;
 	margin: 0 auto;
 }
-nav {
+nav,
+.nav {
 	width: 100%;
 	background: #A47724;
 	padding: 10px 0;
 	margin: 0 0 5px 0;
 }
-nav .nav-list {
+nav .nav-list,
+.nav .nav-list {
 	list-style: none;
 	display: block;
 	width: 960px;
 	margin: 0 auto;
 }
-nav .nav-list li {
+nav .nav-list li,
+.nav .nav-list li {
 	float: left;
 	padding: 0 10px;
 }
-nav .nav-list li a {
+nav .nav-list li a,
+.nav .nav-list li a {
 	color: #fff;
 }
-.main section, .main .section {
+.main section, 
+.main .section {
 	background: #fff;
 	float: left;
 	width: 627px;
