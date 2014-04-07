@@ -102,9 +102,8 @@ var JNS = (function(JNS) {
         JNS.MYCHEESE.calcHeight();
     }
     JNS.MYCHEESE.showHover = function(e, trigger){
-        var e = window.event,
-            element = trigger.getAttribute('data-cheese-id'),
-            hoverElement = document.querySelector('.'+element),
+        var element = trigger.getAttribute('data-cheese-id'),
+            hoverElement = document.querySelector('.cheeseHover.'+element),
             rect = e.srcElement.getBoundingClientRect();
 
         if(hoverElement){
