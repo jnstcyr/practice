@@ -111,8 +111,6 @@ var JNS = (function(JNS) {
         var element = trigger.getAttribute('data-cheese-id'),
             hoverElement = JNS.MYCHEESE.getHoverElement(trigger.parentNode.parentNode.parentNode.childNodes),
             rect = e.srcElement.getBoundingClientRect();
-            console.log(hoverElement);
-
         if(hoverElement){
             var visibleElement = document.querySelector('.cheeseHover'),
                 style = window.getComputedStyle(visibleElement);
