@@ -90,7 +90,7 @@ var JNS = (function(JNS) {
         }
         document.getElementById('suggestedCheeses').style.height = height+'px';
     }
-    JNS.MYCHEESE.removeCheese = function(e){
+    JNS.MYCHEESE.removeCheese = function(e, element){
         var e = e || window.event,
             element =  e.srcElement.getAttribute('data-cheese-id') || e.target.getAttribute('data-cheese-id'),
             d = document.getElementById('suggestedCheeses'),
@@ -101,9 +101,9 @@ var JNS = (function(JNS) {
         d.appendChild(newLi);
         JNS.MYCHEESE.calcHeight();
     }
-    JNS.MYCHEESE.showHover = function(){
+    JNS.MYCHEESE.showHover = function(e, trigger){
         var e = window.event,
-            element = e.srcElement.getAttribute('data-cheese-id') || e.target.getAttribute('data-cheese-id'),
+            element = trigger.getAttribute('data-cheese-id'),
             hoverElement = document.querySelector('.'+element),
             rect = e.srcElement.getBoundingClientRect();
 
@@ -118,9 +118,8 @@ var JNS = (function(JNS) {
             
         }
     }
-    JNS.MYCHEESE.hideHover = function(){
-        var e = window.event,
-            element = e.srcElement.getAttribute('data-cheese-id') || e.target.getAttribute('data-cheese-id'),
+    JNS.MYCHEESE.hideHover = function(e, element){
+        var element = element.getAttribute('data-cheese-id'),
             hoverElement = document.querySelector('.'+element);
         hoverElement.style.display = 'none';
     }
@@ -161,7 +160,7 @@ var JNS = (function(JNS) {
         if(eID){
             var options = JNS.MYCHEESE.registery[eID];
             if(options[e.type]){
-                options[e.type](event);
+                options[e.type](event, target);
             }
         }
     }
@@ -170,19 +169,19 @@ var JNS = (function(JNS) {
 })(JNS)
     JNS.MYCHEESE.makeRequest('cheese.json', JNS.MYCHEESE.buildCheeses);   
     if(addEventListener){
-        document.body.addEventListener('mouseover', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.addEventListener('mouseout', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.addEventListener('click', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.addEventListener('touchenter', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.addEventListener('touchleave', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.addEventListener('touchstart', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.addEventListener('mouseover', JNS.MYCHEESE.getCheeseId, true);
+        document.body.addEventListener('mouseout', JNS.MYCHEESE.getCheeseId, true);
+        document.body.addEventListener('click', JNS.MYCHEESE.getCheeseId, true);
+        document.body.addEventListener('touchenter', JNS.MYCHEESE.getCheeseId, true);
+        document.body.addEventListener('touchleave', JNS.MYCHEESE.getCheeseId, true);
+        document.body.addEventListener('touchstart', JNS.MYCHEESE.getCheeseId, true);
     }else{
-        document.body.attachEvent('mouseover', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.attachEvent('mouseout', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.attachEvent('click', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.attachEvent('touchenter', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.attachEvent('touchleave', function(){JNS.MYCHEESE.getCheeseId()}, true);
-        document.body.attachEvent('touchstart', function(){JNS.MYCHEESE.getCheeseId()}, true);
+        document.body.attachEvent('mouseover', JNS.MYCHEESE.getCheeseId, true);
+        document.body.attachEvent('mouseout', JNS.MYCHEESE.getCheeseId, true);
+        document.body.attachEvent('click', JNS.MYCHEESE.getCheeseId, true);
+        document.body.attachEvent('touchenter', JNS.MYCHEESE.getCheeseId, true);
+        document.body.attachEvent('touchleave', JNS.MYCHEESE.getCheeseId, true);
+        document.body.attachEvent('touchstart', JNS.MYCHEESE.getCheeseId, true);
     }
     
    
