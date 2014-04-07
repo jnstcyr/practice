@@ -75,6 +75,10 @@ nav .nav-list li a {
 	border: solid 1px #E0D289;
 	box-sizing: border-box;
 }
+.cheeseHover {
+	position: absolute;
+	z-index: 999;
+}
 .cheese-profile li,
 .cheeseHover ul li {
 	float: left;

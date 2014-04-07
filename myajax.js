@@ -1,4 +1,4 @@
-avar JNS = (function(JNS) {
+var JNS = (function(JNS) {
     return JNS;
 })({});
 (function(JNS) {
