@@ -112,14 +112,15 @@ var JNS = (function(JNS) {
     JNS.MYCHEESE.showHover = function(e, trigger){
         var element = trigger.getAttribute('data-cheese-id'),
             hoverElement = JNS.MYCHEESE.getHoverElement(trigger.parentNode.parentNode.parentNode.childNodes),
-            rect = e.srcElement.getBoundingClientRect();
+            rect = e.srcElement.getBoundingClientRect(),
+            triggerBox = trigger.getBoundingClientRect();
         if(hoverElement){
             var visibleElement = document.querySelector('.cheeseHover'),
                 style = window.getComputedStyle(visibleElement);
             if (style.display === 'none') {
                 hoverElement.style.display='block'; 
-                hoverElement.style.left = e.pageX-hoverElement.offsetWidth-20+'px';
-                hoverElement.style.top = e.pageY-25+'px';
+                hoverElement.style.left = triggerBox.left-hoverElement.offsetWidth-20+'px';
+                hoverElement.style.top = triggerBox.top-25+'px';
             }
             
         }
