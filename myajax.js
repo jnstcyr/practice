@@ -95,7 +95,8 @@ var JNS = (function(JNS) {
             parentList = document.getElementById('suggestedCheeses'),
             newLi = document.createElement("LI").innerHTML = cheeseElement;
         e.preventDefault;
-        parentList.removeChild(cheeseElement);
+        console.log(cheeseElement);
+        cheeseElement.remove();
         parentList.appendChild(newLi);
         JNS.MYCHEESE.calcHeight();
     }
