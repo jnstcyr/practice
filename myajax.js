@@ -95,10 +95,12 @@ var JNS = (function(JNS) {
             parentList = document.getElementById('suggestedCheeses'),
             newLi = document.createElement("LI").innerHTML = cheeseElement;
         e.preventDefault;
-        console.log(cheeseElement);
-        cheeseElement.remove();
+        JNS.MYCHEESE.removeNode(trigger);
         parentList.appendChild(newLi);
         JNS.MYCHEESE.calcHeight();
+    }
+    JNS.MYCHEESE.removeNode = function(id){
+        return (elem=document.getElementById(id)).parentNode.removeChild(elem);
     }
     JNS.MYCHEESE.getHoverElement = function(nodeElements){
         for(i=0;i<nodeElements.length;i++){
