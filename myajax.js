@@ -87,7 +87,7 @@ var JNS = (function(JNS) {
         for(i=0;i<selectCheeses.length;i++){
             height += selectCheeses[i].offsetHeight;
         }
-        suggestedCheese.style.height = height+'px';
+        suggestedCheese.style.height = (height-5)+'px';
     }
     JNS.MYCHEESE.removeCheese = function(option, element){
         var trigger = element.getAttribute('data-cheese-id'),
@@ -109,10 +109,11 @@ var JNS = (function(JNS) {
             }
         }
     }
-    JNS.MYCHEESE.showHover = function(e, trigger){
+    JNS.MYCHEESE.showHover = function(event, trigger){
+        console.log('hi');
         var element = trigger.getAttribute('data-cheese-id'),
             hoverElement = JNS.MYCHEESE.getHoverElement(trigger.parentNode.parentNode.parentNode.childNodes),
-            rect = e.srcElement.getBoundingClientRect(),
+            rect = event.target.getBoundingClientRect() || event.srcElement.getBoundingClientRect(),
             triggerBox = trigger.getBoundingClientRect();
         if(hoverElement){
             var visibleElement = document.querySelector('.cheeseHover'),
@@ -167,7 +168,7 @@ var JNS = (function(JNS) {
         if(eID){
             var options = JNS.MYCHEESE.registery[eID];
             if(options[e.type]){
-                options[e.type](event, target);
+                options[e.type](e, target);
             }
         }
     }
