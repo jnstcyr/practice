@@ -56,7 +56,7 @@ nav .nav-list li a,
 .main .section {
 	background: #fff;
 	float: left;
-	width: 60%;
+	width: 65%;
 }
 .feature {
 	background: #fff;
@@ -103,7 +103,7 @@ nav .nav-list li a,
 	line-height: 35px;
 }
 .sidebar {
-	width: 35%;
+	width: 32%;
 	box-sizing: border-box;
 	border: solid 1px #DABF68;
 	padding: 15px 8px 0;
