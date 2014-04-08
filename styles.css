@@ -111,11 +111,11 @@ nav .nav-list li a,
 	float: right;
 }
 .suggestedCheese {
-	height: 175px;
+	/*height: 175px;*/
 	overflow: hidden;
 }
 .suggestedCheese > li {
-	margin-bottom: 15px;
+	padding-bottom: 15px;
 	max-height: 307px;
 	overflow: hidden;
 }

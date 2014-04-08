@@ -82,12 +82,12 @@ var JNS = (function(JNS) {
         var cheeses = [],
             height = 0,
             suggestedCheese = document.getElementById('suggestedCheeses');
-        cheeses.push(document.querySelectorAll('.suggestedCheese > li'));
-        selectCheeses = Array.prototype.slice.call( cheeses, 0, 4 );
+        cheeses = document.querySelectorAll('.suggestedCheese > li');
+        selectCheeses = Array.prototype.slice.call( cheeses, 0, 3 );
         for(i=0;i<selectCheeses.length;i++){
-            height += selectCheeses[i].clientHeight;
+            height += selectCheeses[i].offsetHeight;
         }
-        suggestedCheese.height = height+'px';
+        suggestedCheese.style.height = height+'px';
     }
     JNS.MYCHEESE.removeCheese = function(option, element){
         var trigger = element.getAttribute('data-cheese-id'),
