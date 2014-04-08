@@ -43,7 +43,7 @@ var JNS = (function(JNS) {
                         location = responses.cheeses[i]["location"],
                         description = responses.cheeses[i]["description"];
 
-                    suggestedCheeseOutput.push("<li class='clearfix' id='"+id+"'>"+
+                    suggestedCheeseOutput.push("<li class='clearfix selectedCheese' id='"+id+"'>"+
                         "<ul class='cheese-profile plain-list'>"+
                         "<li><div class='cheese-image'>"+
                         "<img class='hover' src='"+image+"'>"+
@@ -82,7 +82,7 @@ var JNS = (function(JNS) {
         var cheeses = [],
             height = 0,
             suggestedCheese = document.getElementById('suggestedCheeses');
-        cheeses = document.querySelectorAll('.suggestedCheese > li');
+        cheeses = document.querySelectorAll('.selectedCheese');
         selectCheeses = Array.prototype.slice.call( cheeses, 0, 3 );
         for(i=0;i<selectCheeses.length;i++){
             height += selectCheeses[i].offsetHeight;
