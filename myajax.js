@@ -1,6 +1,9 @@
-var JNS = (function(JNS) {
-    return JNS;
-})({});
+if(!JNS){
+   var JNS = (function(JNS) {
+        return JNS;
+    })({}); 
+}
+
 (function(JNS) {
     var ajax = {};
     JNS.MYCHEESE = ajax;
@@ -43,24 +46,26 @@ var JNS = (function(JNS) {
                         location = responses.cheeses[i]["location"],
                         description = responses.cheeses[i]["description"];
 
-                    suggestedCheeseOutput.push("<li class='clearfix selectedCheese' id='"+id+"'>"+
-                        "<ul class='cheese-profile plain-list'>"+
-                        "<li><div class='cheese-image'>"+
-                        "<img class='hover' src='"+image+"'>"+
-                        "</li>"+
-                        "<li><div class='cheese-info'>"+
-                        "<a class='cheese-name hover' href='"+
-                        link+"'>"+title+"</a>, "+
-                        location+"<br><a href='"+link+"'>Add Cheese</a></div></li>"+
-                        "<li><div class='cheese-actions'>"+
-                        "<a href='#' class='removecheese'>x</a></div></li>"+
-                        "<li class='cheeseHover'><div>"+
-                        "<div class='arrow-right'></div><ul class='plain-list'>"+
-                        "<li><div class='cheese-image'><a href='"+link+"'><img src='"+
-                        image+"'></a></div></li>"+"<li><div class='cheese-info'><div class='cheese-name'>"+
-                        title+"</div><div class='cheese-location'>"+
-                        location+"</div><div class='cheese-description'>"+
-                        description+"</div></div></li></ul></div></li></div></li></ul>");
+                    suggestedCheeseOutput.push("<li class='selectedCheese' id='"+id+"'>"+
+                        "<div class='cheese-image'><img class='hover' src='"+image+"'></div>"+
+                        "<div class='cheese-info'>"+
+                        "<a class='cheese-name hover' href='"+link+"'>"+title+"</a>, "+
+                        location+
+                        "<a href='"+link+"'> Add Cheese</a></div>"+
+                        "<div class='cheese-actions'>"+
+                            "<input type='button' class='removecheese' value='Remove Cheese'>"+
+                        "</div>"+
+                        "<div class='cheeseHover'>"+
+                            "<div class='arrow-right'></div>"+
+                                "<div class='cheese-image'>"+
+                                    "<img src='"+image+"'>"+
+                                "</div>"+
+                        "<div class='cheese-info'>"+
+                            "<div class='cheese-name'>"+title+"</div>"+
+                            "<div class='cheese-location'>"+location+"</div>"+
+                            "<div class='cheese-description'>"+description+"</div>"+
+                        "</div>"+
+                    "</li>");
                 }
                 JNS.MYCHEESE.displayCheese(suggestedCheeseOutput);
                 JNS.MYCHEESE.initCheeseEvents();
@@ -92,15 +97,31 @@ var JNS = (function(JNS) {
     JNS.MYCHEESE.removeCheese = function(option, element){
         var trigger = element.getAttribute('data-cheese-id'),
             cheeseElement = document.getElementById(trigger),
-            parentList = document.getElementById('suggestedCheeses'),
-            newLi = document.createElement("LI").innerHTML = cheeseElement;
+            suggestedCheeses = document.querySelectorAll('.selectedCheese');
+
         e.preventDefault;
-        JNS.MYCHEESE.removeNode(trigger);
-        parentList.appendChild(newLi);
-        JNS.MYCHEESE.calcHeight();
+        if(suggestedCheeses.length > 3){
+            JNS.MYCHEESE.hideNode(trigger);
+        }else {
+            JNS.MYCHEESE.showNode();
+        }
+        
     }
-    JNS.MYCHEESE.removeNode = function(id){
-        return (elem=document.getElementById(id)).parentNode.removeChild(elem);
+    JNS.MYCHEESE.hideNode = function(id){
+        var item = document.getElementById(id);
+        if(item.className !== 'hide'){
+            item.className = 'hide';
+        }
+        
+    }
+    JNS.MYCHEESE.showNode = function(){
+        var item = document.querySelectorAll('.suggestedCheese .hide'),
+            i = Math.floor(Math.random() * item.length) + 1;
+        if(item[i].className === 'hide'){
+            item[i].className = 'selectedCheese';
+        }
+        console.log(item);
+        
     }
     JNS.MYCHEESE.getHoverElement = function(nodeElements){
         for(i=0;i<nodeElements.length;i++){
@@ -110,9 +131,8 @@ var JNS = (function(JNS) {
         }
     }
     JNS.MYCHEESE.showHover = function(event, trigger){
-        console.log('hi');
         var element = trigger.getAttribute('data-cheese-id'),
-            hoverElement = JNS.MYCHEESE.getHoverElement(trigger.parentNode.parentNode.parentNode.childNodes),
+            hoverElement = JNS.MYCHEESE.getHoverElement(trigger.parentNode.parentNode.childNodes),
             rect = event.target.getBoundingClientRect() || event.srcElement.getBoundingClientRect(),
             triggerBox = trigger.getBoundingClientRect();
         if(hoverElement){
@@ -127,7 +147,7 @@ var JNS = (function(JNS) {
         }
     }
     JNS.MYCHEESE.hideHover = function(e, trigger){
-        var hoverElement = JNS.MYCHEESE.getHoverElement(trigger.parentNode.parentNode.parentNode.childNodes);
+        var hoverElement = JNS.MYCHEESE.getHoverElement(trigger.parentNode.parentNode.childNodes);
         hoverElement.style.display = 'none';
     }
     //Register of DOM elements and events

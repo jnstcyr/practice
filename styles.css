@@ -11,6 +11,9 @@ a {
 	color: #CEAC4A;
 	text-decoration: none;
 }
+.hide {
+	display: none;
+}
 .plain-list {
 	list-style: none;
 	padding: 0;
@@ -81,11 +84,8 @@ nav .nav-list li a,
 }
 .cheeseHover {
 	position: absolute;
+	width: 450px;
 	z-index: 999;
-}
-.cheese-profile li,
-.cheeseHover ul li {
-	float: left;
 }
 .cheese-image img {
 	width: 100%;
@@ -96,21 +96,18 @@ nav .nav-list li a,
 	color:#7A5113;
 }
 .cheese-actions {
-	width: 14px;
-}
-.cheese-actions a {
-	display: block;
-	line-height: 35px;
+	width: 5%;
+	float: left;
+	display: inline-block;
 }
 .sidebar {
-	width: 32%;
+	width: 34%;
 	box-sizing: border-box;
 	border: solid 1px #DABF68;
 	padding: 15px 8px 0;
 	float: right;
 }
 .suggestedCheese {
-	/*height: 175px;*/
 	overflow: hidden;
 }
 .suggestedCheese > li {
@@ -119,14 +116,23 @@ nav .nav-list li a,
 	overflow: hidden;
 }
 .sidebar .cheese-image {
-	display: block;
+	display: inline-block;
 	width: 40px;
 	height: 40px;
+	float: left;
 }
 .sidebar .cheese-info {
-	width: 243px;
+	width: 77%;
+	float: left;
 	font-size: 13px;
 	padding: 0 5px ;
+}
+.removecheese {
+	border: none;
+	background: url(images/ui-icons_222222_256x240.png);
+	background-position-x: -99px;
+	background-position-y: -367px;
+	text-indent: -9999px;
 }
 .cheeseHover {
 	display: none;
