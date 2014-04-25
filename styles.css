@@ -19,15 +19,6 @@ a {
 	padding: 0;
 	margin: 0;
 }
-.clearfix:before,
-.clearfix:after {
-    content: " "; 
-    display: table; 
-}
-
-.clearfix:after {
-    clear: both;
-}
 .main {
 	width: 100%;
 	max-width: 960px;
