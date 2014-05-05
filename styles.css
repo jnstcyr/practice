@@ -11,6 +11,9 @@ a {
 	color: #CEAC4A;
 	text-decoration: none;
 }
+a:hover {
+	text-decoration: underline;
+}
 .hide {
 	display: none;
 }
@@ -74,8 +77,7 @@ nav .nav-list li a,
 	box-sizing: border-box;
 }
 .cheeseHover {
-	position: absolute;
-	width: 450px;
+	position: relative;
 	z-index: 999;
 }
 .cheese-image img {
@@ -86,69 +88,116 @@ nav .nav-list li a,
 	font-weight: bold;
 	color:#7A5113;
 }
-.cheese-actions {
-	width: 5%;
-	float: left;
-	display: inline-block;
-}
 .sidebar {
-	width: 34%;
+	width: 318px;
 	box-sizing: border-box;
 	border: solid 1px #DABF68;
-	padding: 15px 8px 0;
-	float: right;
+	padding-bottom: 5px;
+	margin: 0 auto;
+}
+.sidebar .header {
+	padding: 15px 0 10px 10px;
+	margin: 0 9px;
+}
+.sidebar .header h3 {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	text-transform: none;
+	margin: 0;
+	padding: 0;
+}
+.content {
+	padding: 0 20px;
+}
+.more {
+	font-size: 13px;
+	margin-top: -5px;
+	text-align: right;
 }
 .suggestedCheese {
 	overflow: hidden;
 }
 .suggestedCheese > li {
-	padding-bottom: 15px;
-	max-height: 307px;
-	overflow: hidden;
+	padding-left: 55px;
+	margin: 1px 0;
+	min-height: 50px;
+	height: auto;
+	_height: 50px;
+	position: relative;
+	overflow: visible;
 }
-.sidebar .cheese-image {
-	display: inline-block;
-	width: 40px;
+.selectedCheese > .cheese-image {
+	position: absolute;
+	left: 0;
+	top: 5px;
+}
+.selectedCheese > .cheese-image img {
 	height: 40px;
-	float: left;
+	width: 40px;
 }
-.sidebar .cheese-info {
-	width: 77%;
-	float: left;
+.selectedCheese > .cheese-info {
+	padding-right: 30px;
+	max-height: 34px;
+	height: auto;
+	_height: 34px;
+	line-height: 17px;
 	font-size: 13px;
-	padding: 0 5px ;
+	width: 230px;
+}
+.add-cheese {
+	font-size: 13px;
+}
+.actions {
+	position: absolute;
+	top: 0;
+	right: 0;
+	overflow: hidden;
 }
 .removecheese {
 	border: none;
-	background: url(images/ui-icons_222222_256x240.png);
-	background-position-x: -99px;
-	background-position-y: -367px;
+	width: 2%;
+	cursor: pointer;
+	float: left;
+	display: inline-block;
+	background: url(images/sprite_global_v8.png) no-repeat 100% -1496px;
 	text-indent: -9999px;
 }
 .cheeseHover {
 	display: none;
 	position: absolute;
+	width: 100%;
+}
+.cheeseInner {
 	background: #fff;
 	z-index: 999;
+	overflow: visible;
+	font-size: 13px;
 	border: solid 1px #DABF68;
 	padding: 5px;
+	position: absolute;
 }
-.arrow-right {
+.arrow {
 	width: 0; 
-	height: 0; 
-	border-bottom: 10px solid transparent;  /* left arrow slant */
-	border-top: 10px solid transparent; /* right arrow slant */
-	border-left: 10px solid #DABF68; /* bottom, add background color here */
+	height: 0;
 	font-size: 0;
 	line-height: 0;
-	position: absolute;
-	top: 25px;
-	right: -10px;
+	position: absolute; 
 }
-.cheeseHover .cheese-info {
+.top {
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 20px solid #DABF68;
+	top: -20px;
+	left: 183px;
+}
+.cheeseInner .cheese-info {
 	padding: 5px;
+	width: 230px;
+	float: left;
 }
-.cheeseHover .cheese-image {
+.cheeseInner .cheese-image {
 	height: 100px;
 	width: 100px;
+	float: left;
 }

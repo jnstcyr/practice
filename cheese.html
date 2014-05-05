@@ -1,0 +1,21 @@
+<script id="cheese" type="text/x-handlebars-template">
+    <li class='selectedCheese' id='{{ id }}'>
+        <div class='cheese-image'><img class='hover' src='{{ image }}'></div>
+        <div class='cheese-info'>
+            <a class='cheese-name hover' href='{{ link }}'>{{ title }}</a>, 
+            {{ location }}
+            <p><a href='{{ link }}'> Add Cheese</a></p>
+        </div>
+         <input type='button' class='removecheese' value='Remove Cheese'>
+        <div class='cheeseHover'>
+            <div class='arrow-right'></div>
+                <div class='cheese-image'>
+                    <img src='{{ image }}'>
+                </div>
+        <div class='cheese-info'>
+            <div class='cheese-name'>{{ title }}</div>
+            <div class='cheese-location'>{{ location }}</div>
+            <div class='cheese-description'>{{ description }}</div>
+        </div>
+    </li>
+</script>
